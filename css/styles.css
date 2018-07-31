@@ -59,6 +59,7 @@ form > button:last-child {
     height: 50px;
     width: 50px;
     border-radius: 25px;
+    position: relative;
 }
 
 .tables {
@@ -87,6 +88,7 @@ form > button:last-child {
 
 .reserved {
     background-color: #ADAAAA;
+    color: #eee;
 }
 
 .reserved:hover {
@@ -95,6 +97,24 @@ form > button:last-child {
 
 .hover {
     background-color: #EEE;
+}
+
+section.guest-details {
+    background-color: #ADAAAA;
+    position: absolute;
+    left: 20%;
+    top: 60%;
+    width: 12em;
+    z-index: 5000000;
+    padding: 6px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+section.guest-details p {
+    padding: 0px;
+    margin: 0px;
 }
 
 @media only screen and (min-width: 390px) {

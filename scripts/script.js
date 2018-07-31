@@ -1,5 +1,13 @@
 'use strict';
 
+class Reservation {
+    constructor(name, phone, guestCount) {
+        this.name = name;
+        this.phone = phone;
+        this.guestCount = guestCount;
+    }
+}
+
 $(document).ready( () => {
     let tablesPerRow = 3;
     let tables = 9;
@@ -48,14 +56,14 @@ $(document).ready( () => {
     const openForm = (clickedTable) => {
         // Show the form
         let $form = $('form');
-        $form.show();
+        $form.fadeIn(600);
         $('form h3').text(`Table Number: ${clickedTable.text()}`);
         $('form').attr('table', `${clickedTable.text()}`);
     }
 
     const hideForm = () => {
         let $form = $('form');
-        $form.hide();
+        $form.fadeOut(600);
     }
 
     const submitForm = () => {
@@ -70,17 +78,22 @@ $(document).ready( () => {
                 $table = $tables.eq(i);
             } 
         }
+        let inputs = $('form > input');
         if($table){
-            setReserved($table);
+            setReserved($table, inputs);
         }
+
         clearForm();
         hideForm();
     }
 
-    const setReserved = ($table) => {
-        $table.removeClass('available');
-        $table.removeClass('hover');
-        $table.addClass('reserved');
+    const setReserved = ($table, inputs) => {
+        $table.removeClass('available')
+            .removeClass('hover')
+            .addClass('reserved')
+            .data('guest-name', inputs.eq(0).val())
+            .data('guest-phone', inputs.eq(1).val())
+            .data('guest-size', inputs.eq(2).val());
     }
 
     const clearForm = () => {
@@ -123,12 +136,22 @@ $(document).ready( () => {
         $(e.target).toggleClass('hover');
     });
 
+    $('body').on('mouseenter mouseleave', '.table.reserved', (e) => {
+        $('.guest-details').toggle();
+        $('.guest-details p').eq(0).text(`Name: ${$(e.target).data('guest-name')}`);
+        $('.guest-details p').eq(1).text(`Phone: ${$(e.target).data('guest-phone')}`);
+        $('.guest-details p').eq(2).text(`Party Size: ${$(e.target).data('guest-size')}`);
+        if($(e.target).hasClass('table')) {
+            $(e.target).append($('.guest-details').eq(0));
+        }
+    });
+
+
     $('.reserved').css('cursor', 'not-allowed');
     $('.available').css('cursor', 'pointer');
 
-    // $(window).on('resize', (e) => {
-    //     buildTablesContainer(tables, determineNumOfRows(tables, tablesPerRow));
-    // });
+
+    $('.guest-details').hide();
 
     hideForm();
     createTables(tables, tablesPerRow);
