@@ -22,7 +22,7 @@ $(document).ready( () => {
             $currDiv.append(`<button class='table available'>${i}</button>`);
         }
 
-        buildTablesContainer(tablesPerRow, numRows);
+        // buildTablesContainer(tablesPerRow, numRows);
     }
 
     //  Determine Number of Rows
@@ -87,21 +87,21 @@ $(document).ready( () => {
         $('form input').val('');
     }
 
-    const buildTablesContainer = (tablesPerRow, numRows) => {
-        let buttonWidth = $('.tables .table').eq(0).width();
-        let spacingMultiplier;
-        if (buttonWidth < 60) {
-            spacingMultiplier = 2;
-        }
-        else if (buttonWidth < 90) {
-            spacingMultiplier = 2.2;
-        }
-        else if (buttonWidth < 150) {
-            spacingMultiplier = 3;
-        }
-        // $('.tables').width(buttonWidth * tablesPerRow * spacingMultiplier);
-        // $('.tables').height(buttonWidth * numRows * spacingMultiplier);
-    }
+    // const buildTablesContainer = (tablesPerRow, numRows) => {
+    //     let buttonWidth = $('.tables .table').eq(0).width();
+    //     let spacingMultiplier;
+    //     if (buttonWidth < 60) {
+    //         spacingMultiplier = 2;
+    //     }
+    //     else if (buttonWidth < 90) {
+    //         spacingMultiplier = 2.2;
+    //     }
+    //     else if (buttonWidth < 150) {
+    //         spacingMultiplier = 3;
+    //     }
+    //     // $('.tables').width(buttonWidth * tablesPerRow * spacingMultiplier);
+    //     // $('.tables').height(buttonWidth * numRows * spacingMultiplier);
+    // }
 
 
 
@@ -126,11 +126,9 @@ $(document).ready( () => {
     $('.reserved').css('cursor', 'not-allowed');
     $('.available').css('cursor', 'pointer');
 
-    hideForm();
-    $(window).on('resize', (e) => {
-        buildTablesContainer(tables, determineNumOfRows(tables, tablesPerRow));
-    });
-
+    // $(window).on('resize', (e) => {
+    //     buildTablesContainer(tables, determineNumOfRows(tables, tablesPerRow));
+    // });
 
     hideForm();
     createTables(tables, tablesPerRow);
