@@ -1,0 +1,134 @@
+body {
+    background-color: #E1D7D4;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+h1, h2 {
+    color: #E34E45;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+}
+
+form {
+    position: fixed;
+    top: -300px;
+    background-color: white;
+    box-shadow: 0px 0px 31px 1px rgba(0,0,0,0.3);
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 500;
+}
+
+form > button:first-child {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    background-color: rgb(f,f,f, 0);
+    border: none;
+}
+
+form > input {
+    width: 95%;
+    margin: 5px;
+    font-size: 1.5em;
+    border: none;
+    border-bottom: 1px solid #CCC;
+}
+
+form > button:last-child {
+    background-color: #008000;
+    box-shadow: 0px 5px 15px 1px rgba(0,0,0,0.3);
+    font-size: 1.5em;
+    width: 95%;
+    align-self: center;
+}
+
+.table {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.tables {
+    padding: 20px 20px;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.tables div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+ 
+.available {
+    background-color: #CCC;
+}
+
+.available:hover {
+    cursor: pointer;
+}
+
+.reserved {
+    background-color: #ADAAAA;
+}
+
+.reserved:hover {
+    cursor: not-allowed;
+}
+
+.hover {
+    background-color: #EEE;
+}
+
+@media only screen and (min-width: 390px) {
+    .table {
+        height: 60px;
+        width: 60px;
+        border-radius: 30px;
+    }
+
+    .tables {
+        width: 300px;
+        height: 300px;
+    }
+
+    form {
+        top: -330px;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .table {
+        height: 100px;
+        width: 100px;
+        border-radius: 60px;
+    }
+
+    .tables {
+        width: 500px;
+        height: 500px;
+    }
+
+    form {
+        top: -530px;
+        width: 500px;
+        height: 500px;
+    }
+}
